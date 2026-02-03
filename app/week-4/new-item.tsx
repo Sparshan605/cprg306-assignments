@@ -62,8 +62,8 @@ export default function NewItem() {
                 ? "border-red-400"
                 : "border-gray-300"
             } ${
-              nameTouched && name && name.length >= 2
-              ? "border-red-400"
+            nameTouched && name && name.length <= 2
+                ? "border-red-400"
                 : "border-gray-300"
             }`}
             required
@@ -76,6 +76,11 @@ export default function NewItem() {
           }
           {nameTouched && name && /^\d+$/.test(name) && (
             <p className="text-red-500 text-sm mt-1">Name cannot be only numbers.</p>
+          )}
+          {nameTouched && name && name.length <= 2 && (
+            <p className="text-red-500 text-sm mt-1">
+              Name must be at least 2 characters long.
+            </p>
           )}
 
         </div>
