@@ -14,6 +14,10 @@ export default function NewItem() {
       alert("Please enter a valid name with at least 2 characters.");
       return;
     }
+    if (typeof name !== "string") {
+      alert("Name must be a string.");
+      return;
+    }
 
     const item = { name, quantity: Number(quantity), category };
     console.log(item);
