@@ -15,7 +15,7 @@ export default function NewItem() {
       return;
     }
 
-    const item = { name, quantity, category };
+    const item = { name, quantity: Number(quantity), category };
     console.log(item);
     alert(`Item Added: ${name}, Quantity: ${quantity}, Category: ${category}`);
 
