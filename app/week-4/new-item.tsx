@@ -61,6 +61,10 @@ export default function NewItem() {
             nameTouched && name && /^\d+$/.test(name)
                 ? "border-red-400"
                 : "border-gray-300"
+            } ${
+              nameTouched && name && name.length >= 2
+              ? "border-red-400"
+                : "border-gray-300"
             }`}
             required
           />
