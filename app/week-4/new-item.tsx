@@ -53,20 +53,28 @@ export default function NewItem() {
             onChange={(e) => setName(e.target.value)}
             onBlur={() => setNameTouched(true)}
             placeholder="Enter item name..."
-            className={`w-full px-4 py-3 rounded-xl bg-gray-50 text-black ${
+            className={`w-full px-4 py-3 rounded-xl bg-gray-50 text-black border border-gray-300   ${
               nameTouched && !name
+                ? "border-red-400"
+                : "border-gray-300"
+            } ${
+            nameTouched && name && /^\d+$/.test(name)
                 ? "border-red-400"
                 : "border-gray-300"
             }`}
             required
           />
-          {nameTouched && !name && (
+          {nameTouched && !name &&  (
             <p className="text-red-500 text-sm mt-1">
               Name is required.
             </p>
+          )
+          }
+          {nameTouched && name && /^\d+$/.test(name) && (
+            <p className="text-red-500 text-sm mt-1">Name cannot be only numbers.</p>
           )}
-        </div>
 
+        </div>
         {/* Quantity Field */}
         <div>
           <label
