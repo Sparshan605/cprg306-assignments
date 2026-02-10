@@ -29,7 +29,7 @@ export default function ItemsSort() {
     return (
         <div className="max-w-md mx-auto mt-10 p-8 bg-white/80 backdrop-blur-lg rounded-2xl shadow-xl border border-gray-200">
             <h2 className="text-3xl font-bold mb-8 text-gray-800 text-center tracking-wide">
-                Sort Items By NAme or category
+                Sort Items By Name or Category
             </h2>
             <div className="flex justify-center mb-6">
                 <button
