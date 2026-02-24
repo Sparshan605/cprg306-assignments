@@ -1,8 +1,9 @@
-import NewItemForm from "./new-item";
+import NewItemss from "./newItem";
+
 export default function Week4Page() {
   return (
     <div className="ml-20 mt-30">
-      <NewItemForm />
+      < NewItemss />
     </div>
   );
 }
