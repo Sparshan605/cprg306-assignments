@@ -4,7 +4,7 @@ import Items from "./item.json";
 
 export default function ItemsSort() {
     const [sortby, setSortby] = useState("name");
-    const [groupby, setGroupby] = useState("category");
+    // const [groupby, setGroupby] = useState("category");
 
     function GroupByCategory() {
         const groupedItems = Items.reduce((acc: { [key: string]: typeof Items }, item) => {

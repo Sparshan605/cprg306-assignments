@@ -1,20 +1,15 @@
 "use client";
-
 import { useState } from "react";
 
-interface onAddItem {
-    name: string;
-    quantity: number;
-    category: string;
-  }
+interface NewItemProps {
+  onAddItem: (item: { name: string; quantity: number; category: string }) => void;
+}
 
-export default function NewItem({ onAddItem }: { onAddItem: (item: onAddItem) => void }) {
+export default function NewItem({ onAddItem }: NewItemProps) {
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [category, setCategory] = useState("produce");
   const [nameTouched, setNameTouched] = useState(false);
-
-  
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -29,7 +24,8 @@ export default function NewItem({ onAddItem }: { onAddItem: (item: onAddItem) =>
     }
 
     const item = { name, quantity: Number(quantity), category };
-    onAddItem(item);
+    onAddItem(item); // ← calls the prop, not a local function
+
     setName("");
     setQuantity(1);
     setCategory("produce");
