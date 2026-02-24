@@ -1,6 +1,6 @@
 "use client";
 import ItemList from "./item-list";
-import NewItem from "./new-item";
+import NewItems from "./new-item";
 import Items from "./item.json";
 import { useState } from "react";
 
@@ -18,7 +18,7 @@ export default function Week6page() {
   return (
     <main className="container  mx-auto p-4">
       <h1 className="text-2xl ml-120 mt-6 font-bold mb-4">Week 6 Shopping List</h1>
-      <NewItem onAddItem={handleAddItem} />
+      <NewItems onAddItem={handleAddItem} />
       <ItemList items={Item} />
     </main>
   );

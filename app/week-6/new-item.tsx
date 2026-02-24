@@ -5,7 +5,7 @@ interface NewItemProps {
   onAddItem: (item: { name: string; quantity: number; category: string }) => void;
 }
 
-export default function NewItem({ onAddItem }: NewItemProps) {
+export default function NewItems({ onAddItem }: NewItemProps) {
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [category, setCategory] = useState("produce");
@@ -24,7 +24,7 @@ export default function NewItem({ onAddItem }: NewItemProps) {
     }
 
     const item = { name, quantity: Number(quantity), category };
-    onAddItem(item); // ← calls the prop, not a local function
+    onAddItem(item);
 
     setName("");
     setQuantity(1);
@@ -56,27 +56,24 @@ export default function NewItem({ onAddItem }: NewItemProps) {
             onChange={(e) => setName(e.target.value)}
             onBlur={() => setNameTouched(true)}
             placeholder="Enter item name..."
-            className={`w-full px-4 py-3 rounded-xl bg-gray-50 text-black border border-gray-300   ${
+            className={`w-full px-4 py-3 rounded-xl bg-gray-50 text-black border border-gray-300 ${
               nameTouched && !name
                 ? "border-red-400"
                 : "border-gray-300"
             } ${
-            nameTouched && name && /^\d+$/.test(name)
+              nameTouched && name && /^\d+$/.test(name)
                 ? "border-red-400"
                 : "border-gray-300"
             } ${
-            nameTouched && name && name.length <= 2
+              nameTouched && name && name.length <= 2
                 ? "border-red-400"
                 : "border-gray-300"
             }`}
             required
           />
-          {nameTouched && !name &&  (
-            <p className="text-red-500 text-sm mt-1">
-              Name is required.
-            </p>
-          )
-          }
+          {nameTouched && !name && (
+            <p className="text-red-500 text-sm mt-1">Name is required.</p>
+          )}
           {nameTouched && name && /^\d+$/.test(name) && (
             <p className="text-red-500 text-sm mt-1">Name cannot be only numbers.</p>
           )}
@@ -85,8 +82,8 @@ export default function NewItem({ onAddItem }: NewItemProps) {
               Name must be at least 2 characters long.
             </p>
           )}
-
         </div>
+
         {/* Quantity Field */}
         <div>
           <label
@@ -135,7 +132,7 @@ export default function NewItem({ onAddItem }: NewItemProps) {
           </select>
         </div>
 
-        {/* Submit Button (UNCHANGED) */}
+        {/* Submit Button */}
         <button
           type="submit"
           disabled={isFormInvalid}
