@@ -41,6 +41,12 @@ export default function Home() {
         <button className="px-8 py-10 bg-pink-600 text-white rounded-lg " type="button">Week-7 Page</button>
         </Link>
         </div>
+        <div className=" mt-8 flex justify-center items-start">
+        <br></br>
+        <Link href="/week-8">
+        <button className="px-8 py-10 bg-gray-600 text-white rounded-lg " type="button">Week-8 Page</button>
+        </Link>
+        </div>
         
       </main>
     </>
