@@ -2,7 +2,7 @@ import { db } from "../_utils/firebase";
 import { collection, getDocs, addDoc } from "firebase/firestore";
 
 export interface Item {
-  id?: string;  // optional since new items don't have one yet
+  id: string;
   name: string;
   quantity: number;
   category: string;
@@ -10,23 +10,14 @@ export interface Item {
 
 export async function GetItems(userId: string) {
   const items: Item[] = [];
-
-  const itemsSnapshot = await getDocs(
-    collection(db, "users", userId, "items")
-  );
-
-  itemsSnapshot.forEach((doc) => {
-    items.push({
-      id: doc.id,
-      ...(doc.data() as Item),
-    });
+  const querySnapshot = await getDocs(collection(db, "users", userId, "items"));
+  querySnapshot.forEach((doc) => {
+    items.push({ id: doc.id, ...(doc.data() as Omit<Item, "id">) });
   });
-
   return items;
 }
 
 export async function AddItem(userId: string, item: Omit<Item, "id">) {
-  const itemsRef = collection(db, "users", userId, "items");
-  const docRef = await addDoc(itemsRef, item);
+  const docRef = await addDoc(collection(db, "users", userId, "items"), item);
   return docRef.id;
 }
